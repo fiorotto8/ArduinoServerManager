@@ -38,3 +38,15 @@ def readEnv(server):
     time.sleep(1)
     return response_arr
 
+def WriteAndRead(server, name, message,verbose=None):
+    encoded_message = encodeArd(message.encode())
+    server.arduino_write(name, encoded_message)
+    time.sleep(1)  # Allow some time for the message to be processed
+    # Read the output for calibration
+    response_encoded = server.arduino_readlines(name)
+    # Assume response_encoded is a list of Base64-encoded strings
+    response_decoded = [decodeArd(line) for line in response_encoded]
+    if verbose is not None:
+        for line in response_decoded:
+            print(f"Response from {name}: {line}")
+    return response_decoded

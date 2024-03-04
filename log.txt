@@ -209,3 +209,23 @@ Voltage set to 200 for channel 1.
 2024-03-04 14:44:31.375873 Position is correct: 10
 2024-03-04 14:45:20.028467 Setting Position to: 10
 2024-03-04 14:45:54.487608 Position set correclty at: 10
+2024-03-04 14:49:08.839971 Setting Position to: 10
+2024-03-04 14:49:47.996399 Position set correclty at: 10
+2024-03-04 14:55:24.124250 Reading KEG variables...
+2024-03-04 14:55:28.136792 Reading MANGOlino variables...
+2024-03-04 14:55:58.687395 Reading KEG variables...
+2024-03-04 14:56:02.700243 Reading MANGOlino variables...
+2024-03-04 14:56:19.828847 Reading KEG variables...
+2024-03-04 14:56:23.840652 Reading MANGOlino variables...
+2024-03-04 14:57:02.087290 Setting Position to: 10
+2024-03-04 14:57:41.497983 Position set correclty at: 10
+2024-03-04 15:12:45.325446 Setting Position to: 0.0
+2024-03-04 15:13:06.972951 Position set correclty at: 0.0
+2024-03-04 15:22:01.068342 Channels ON.
+2024-03-04 15:22:01.069283 ERROR in setting drift field: cannot marshal <class 'numpy.float64'> objects
+2024-03-04 15:22:43.130715 Channels ON.
+2024-03-04 15:22:43.130841 ERROR in setting drift field: cannot marshal <class 'numpy.float64'> objects
+2024-03-04 15:23:33.908547 Channels ON.
+2024-03-04 15:23:34.338447 CH0 at 2770.0, CH1 at 7045.0
+2024-03-04 15:24:00.694960 Channels ON.
+2024-03-04 15:24:01.121253 CH0 at 2785.0, CH1 at 7060.0
