@@ -24,6 +24,10 @@ def main():
     FC_base=GEM_stack+(args.field*space_ring)
     FC_top=FC_base+(drift*args.field)
     
+    if FC_top or FC_base >14900: 
+        ut.log("Field to large for this GEM configuration", log_path)
+        sys.exit(1)
+    
     if args.verbose is not None: print(f"FC base {FC_base} and FC top {FC_top}")
 
     try:

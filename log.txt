@@ -229,3 +229,4 @@ Voltage set to 200 for channel 1.
 2024-03-04 15:23:34.338447 CH0 at 2770.0, CH1 at 7045.0
 2024-03-04 15:24:00.694960 Channels ON.
 2024-03-04 15:24:01.121253 CH0 at 2785.0, CH1 at 7060.0
+2024-03-04 15:29:03.172026 Field to large for this GEM configuration
