@@ -1,1 +1,118 @@
-2024-02-28 16:54:05.887942 Server alive
+2024-02-28 17:24:05.669791 Server Alive
+2024-02-28 23:59:01.548978 Server closed
+127.0.0.1 - - [28/Feb/2024 17:24:17] "POST /RPC2 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2024 17:24:17] "POST /RPC2 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2024 17:24:18] "POST /RPC2 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2024 17:28:38] "POST /RPC2 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2024 17:28:39] "POST /RPC2 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2024 17:29:44] "POST /RPC2 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2024 17:29:46] "POST /RPC2 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2024 17:31:45] "POST /RPC2 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2024 17:31:45] "POST /RPC2 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2024 17:31:46] "POST /RPC2 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2024 17:33:54] "POST /RPC2 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2024 17:33:54] "POST /RPC2 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2024 17:33:55] "POST /RPC2 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2024 18:07:40] "POST /RPC2 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2024 18:07:41] "POST /RPC2 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2024 18:07:45] "POST /RPC2 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2024 18:07:46] "POST /RPC2 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2024 18:58:19] "POST /RPC2 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2024 18:58:20] "POST /RPC2 HTTP/1.1" 200 -
+2024-02-29 15:55:09.196446 Server Alive
+2024-02-29 15:57:26.838319 Server closed
+2024-02-29 15:57:32.701917 Server Alive
+2024-02-29 16:04:00.002130 Server closed
+2024-02-29 16:13:40.275117 Connected to board with address ttyACM3
+2024-02-29 16:13:40.275335 Server Alive
+2024-03-01 16:25:58.565702 Connected to Arduino /dev/ttyACM0: KEG
+2024-03-01 16:26:00.567662 Connected to Arduino /dev/ttyACM1: MANGOlino
+2024-03-01 16:26:04.174448 Connected to board with address ttyACM3
+2024-03-01 16:26:04.174605 Server Alive
+2024-03-01 16:30:00.293508 Server closed
+2024-03-01 16:30:21.632585 Connected to Arduino /dev/ttyACM0: KEG
+2024-03-01 16:30:23.635204 Connected to Arduino /dev/ttyACM1: MANGOlino
+2024-03-01 16:30:27.208774 Connected to board with address ttyACM3
+2024-03-01 16:30:27.208992 Server Alive
+ERROR: Invalid channel number.
+ERROR: <Fault 1: "<class 'TypeError'>:set() takes 4 positional arguments but 5 were given">
+Channel 0 turned off.
+Channel 0 turned on.
+Voltage set to 2000 for channel 0.
+2024-03-01 16:35:11.590601 Voltage set to 3000 for channel 0.
+2024-03-01 16:35:25.033361 Voltage set to 3000 for channel 0.
+2024-03-01 16:45:17.599110 Server closed
+2024-03-01 16:45:26.398996 Connected to Arduino /dev/ttyACM0: KEG
+2024-03-01 16:45:28.399830 Connected to Arduino /dev/ttyACM1: MANGOlino
+2024-03-01 16:45:32.005635 Connected to board with address ttyACM3
+2024-03-01 16:45:32.005773 Server Alive
+Channel 0 turned off.
+Channel 0 turned on.
+Channel 0 turned on.
+2024-03-01 16:49:11.162615 Server closed
+2024-03-02 19:38:36.068551 Connected to Arduino /dev/ttyACM0: KEG
+2024-03-02 19:38:38.071089 Connected to Arduino /dev/ttyACM1: MANGOlino
+2024-03-02 19:38:41.642508 Connected to board with address ttyACM3
+2024-03-02 19:38:41.642671 Server Alive
+Voltage set to 2800 for channel 1.
+Voltage set to 8000 for channel 1.
+Voltage set to 8560 for channel 1.
+Voltage set to 8580 for channel 1.
+2024-03-02 23:59:01.236610 Server closed
+2024-03-03 14:14:12.831870 Connected to Arduino /dev/ttyACM0: KEG
+2024-03-03 14:14:14.832832 Connected to Arduino /dev/ttyACM1: MANGOlino
+ERROR: [Errno 111] Connection refused
+2024-03-03 14:15:47.584843 Connected to Arduino /dev/ttyACM0: KEG
+2024-03-03 14:15:49.587530 Connected to Arduino /dev/ttyACM1: MANGOlino
+2024-03-03 14:15:53.156613 Connected to board with address ttyACM3
+2024-03-03 14:15:53.156755 Server Alive
+Voltage set to 8560 for channel 1.
+Voltage set to 8590 for channel 1.
+Voltage set to 8590 for channel 1.
+Voltage set to 8580 for channel 1.
+Voltage set to 8590 for channel 1.
+Voltage set to 8550 for channel 1.
+ERROR: <Fault 1: "<class 'pycaenhv.errors.CAENHVError'>:Write error in communication channel">
+Voltage set to 8550 for channel 1.
+Voltage set to 8590 for channel 1.
+Voltage set to 8550 for channel 1.
+Voltage set to 8590 for channel 1.
+2024-03-03 23:59:01.120390 Server closed
+ERROR: [Errno 111] Connection refused
+2024-03-04 10:11:25.335427 Connected to Arduino /dev/ttyACM0: KEG
+2024-03-04 10:11:27.338163 Connected to Arduino /dev/ttyACM1: MANGOlino
+2024-03-04 10:11:35.323057 Connected to Arduino /dev/ttyACM0: KEG
+2024-03-04 10:11:37.323765 Connected to Arduino /dev/ttyACM1: MANGOlino
+2024-03-04 10:11:40.898957 Connected to board with address ttyACM3
+2024-03-04 10:11:40.899138 Server Alive
+ERROR: <Fault 1: "<class 'pycaenhv.errors.CAENHVError'>:Value out of range">
+ERROR: <Fault 1: "<class 'pycaenhv.errors.CAENHVError'>:Value out of range">
+ERROR: <Fault 1: "<class 'pycaenhv.errors.CAENHVError'>:Value out of range">
+ERROR: <Fault 1: "<class 'pycaenhv.errors.CAENHVError'>:Value out of range">
+ERROR: <Fault 1: "<class 'pycaenhv.errors.CAENHVError'>:Value out of range">
+ERROR: <Fault 1: "<class 'pycaenhv.errors.CAENHVError'>:Value out of range">
+2024-03-04 10:13:58.308061 Server closed
+2024-03-04 10:14:00.640436 Connected to Arduino /dev/ttyACM0: KEG
+2024-03-04 10:14:02.643005 Connected to Arduino /dev/ttyACM1: MANGOlino
+2024-03-04 10:14:16.251841 Connected to Arduino /dev/ttyACM0: KEG
+2024-03-04 10:14:18.254398 Connected to Arduino /dev/ttyACM1: MANGOlino
+2024-03-04 10:14:21.928590 Connected to board with address ttyACM3
+2024-03-04 10:14:21.928810 Server Alive
+Voltage set to 8590 for channel 1.
+Voltage set to 8580 for channel 1.
+Voltage set to 8550 for channel 1.
+Voltage set to 8590 for channel 1.
+Voltage set to 8550 for channel 1.
+Channel 1 turned on.
+Voltage set to 50 for channel 1.
+ERROR: <Fault 1: "<class 'pycaenhv.errors.CAENHVError'>:Write error in communication channel">
+Voltage set to 8590 for channel 1.
+Voltage set to 200 for channel 1.
+Voltage set to 200 for channel 1.
+Channel 1 turned on.
+Voltage set to 200 for channel 1.
+2024-03-04 11:34:08.792535 Server closed
+2024-03-04 11:36:16.253585 Connected to Arduino /dev/ttyACM0: KEG
+2024-03-04 11:36:18.255771 Connected to Arduino /dev/ttyACM1: MANGOlino
+2024-03-04 11:36:21.796830 Connected to board with address ttyACM3
+2024-03-04 11:36:21.797006 Server Alive
