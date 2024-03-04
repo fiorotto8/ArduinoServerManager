@@ -31,15 +31,19 @@ def main():
             time.sleep(1)  # Allow some time for the message to be processed
 
             # Use the prefixed method name for reading the response
-            response_encoded = server.arduino_readline(name)
-            response = ut.decodeArd(response_encoded)
+            response_encoded = server.arduino_readlines(name)
+            # Assume response_encoded is a list of Base64-encoded strings
+            response_decoded = [ut.decodeArd(line) for line in response_encoded]
             if args.verbose is not None:
-                print(f"Response from {name} after sending {args.message}: {response}")
+                for line in response_decoded:
+                    print(f"Response from {name}: {line}")
             else:
-                print(response)
-
+                for line in response_decoded:
+                    ut.log(f"Response from {name}: {line}")
         except Exception as e:
-            print(f"Error interacting with {name}: {e}")
+            ut.log(f"Error interacting with {name}: {e}")
+            if args.verbose is not None: print(f"Error interacting with {name}: {e}")
+
 
 if __name__ == "__main__":
     main()

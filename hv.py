@@ -11,7 +11,7 @@ class Board:
         system_type = CAENHV_SYSTEM_TYPE["N1470"]
         link_type = LinkType["USB_VCP"]
         self.handle = init_system(system_type, link_type, self.host)
-        print(f"Connected to board with handle {self.handle}")
+        #print(f"Connected to board with handle {self.handle}")
 
     @property
     def crate_map(self):

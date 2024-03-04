@@ -16,7 +16,7 @@ class ArduinoSerialWrapper:
         self.devices = {}
         for name, (port, baud) in devices.items():
             try:
-                self.devices[name] = serial.Serial(port, baud)
+                self.devices[name] = serial.Serial(port, baud, timeout=0.1)  # 100 ms timeout
                 ut.log(f"Connected to Arduino {port}: {name}")
 
                 time.sleep(2)  # Give time for serial connection to establish
@@ -31,10 +31,28 @@ class ArduinoSerialWrapper:
         else:
             raise ValueError(f"Device {name} not found")
     
-    def readline(self, name):
+    def readlines(self, name):
         device = self.devices.get(name)
         if device:
-            return base64.b64encode(device.readline()).decode("utf-8")
+            lines = []  # Initialize an empty list to hold the lines read from the serial port
+            start_time = time.time()  # Record the start time for the timeout
+            read_timeout = 60  # Timeout in seconds
+
+            while True:
+                if time.time() - start_time > read_timeout:
+                    break  # Break the loop if the timeout is reached
+
+                line = device.readline()  # Read a line from the serial port
+                if line:
+                    encoded_line = base64.b64encode(line).decode("utf-8")  # Encode the line
+                    lines.append(encoded_line)  # Add the encoded line to the list
+                    if "PANDA" in line.decode("utf-8"):  # Check if the decoded line contains "PANDA"
+                        break  # Exit the loop if "PANDA" is found
+                    start_time = time.time()  # Reset the start time whenever new data is received
+                else:
+                    time.sleep(0.1)  # Small delay to prevent a tight loop if no data is available
+
+            return lines
         else:
             raise ValueError(f"Device {name} not found")
     
@@ -74,7 +92,7 @@ if __name__ == '__main__':
         
         # Arduino methods
         server.register_function(lambda name, data: arduino_wrapper.write(name, data), 'arduino_write')
-        server.register_function(lambda name: arduino_wrapper.readline(name), 'arduino_readline')
+        server.register_function(lambda name: arduino_wrapper.readlines(name), 'arduino_readlines')
         server.register_function(lambda name: arduino_wrapper.get_port(name), 'arduino_get_port')
 
         # HV Board methods
