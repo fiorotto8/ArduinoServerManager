@@ -1,8 +1,12 @@
 # Handle multiple Serial Devices with one Server
 
-A simpleRPC server is initialized by `rpcServer.py` where two instances are instantiated to manage the comunication with both the Arduinos.
-The class *ArduinoSerialWrapper* contains the functions exposed to the client that may be used to talk with the device through the server
-`rpcClient_simple.py` contains a simple example to write a single word to a selected Arduino
+A simpleRPC server is initialized by `rpcServer.py` where three instances are instantiated to manage the comunication with both the Arduinos and the CAEN N1570 borad.
+- The class *ArduinoSerialWrapper* contains the functions exposed to the client that may be used to talk with the device through the server
+`rpcClient_simpleArd.py` contains a simple example to write a single word to a selected Arduino
+- The class *HvSerialWrapper* contains the functions exposed to the client that may be used to set and get parameters of HV channels
+`rpcClient_simpleHV.py` contains a simple example to set voltage to certain channel
+
+More examples are present that may be needed for datataking 
 
 ## Use of crontab
 The program may be started with a cronjob as in the following example.
