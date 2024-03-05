@@ -8,7 +8,7 @@ import time
 #Everything that is sent to the server and every that is read from the server should be encoded and decodeed accordinly with the funciton
 
 #Utilities
-def log(msg, path='/home/cygno01/Desktop/ArduinoServerManager/log.txt'):  #function that write a log file witha specified message
+def log(msg, path='/home/cygno01/daq/online/ArduinoServerManager/log.txt'):  #function that write a log file witha specified message
     f=open(path, 'a') #open the log file, append mode
     f.write(str(dt.now())+" "+str(msg)+"\n") #write datetime and message
     f.close() #close the log file

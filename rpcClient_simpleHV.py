@@ -4,7 +4,7 @@ from xmlrpc.client import ServerProxy
 import time
 import utilities as ut  # Assuming this contains the log function
 
-log_path = '/home/cygno01/Desktop/ArduinoServerManager/log.txt'
+log_path = '/home/cygno01/daq/online/ArduinoServerManager/log.txt'
 
 def main():
     parser = argparse.ArgumentParser(description='Control and monitor HV board.')

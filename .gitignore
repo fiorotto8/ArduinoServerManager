@@ -2,3 +2,6 @@ Picosec_DAQ/
 __pycache__/
 pycaenhv/
 log.txt
+env_log.csv
+HV_control.sh
+run_forever.sh

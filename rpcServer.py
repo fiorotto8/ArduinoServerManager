@@ -9,7 +9,7 @@ import base64
 import time
 import hv
 
-log_path='/home/cygno01/Desktop/ArduinoServerManager/log.txt'
+log_path='/home/cygno01/daq/online/ArduinoServerManager/log.txt'
 
 class ArduinoSerialWrapper:
     def __init__(self, devices):
