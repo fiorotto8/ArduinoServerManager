@@ -14,6 +14,7 @@ def main():
     parser.add_argument("-c", "--channel", type=int, default=0, help="Select channel on the HV board")
     parser.add_argument("-on", "--turn_on", action='store_true', help="Turn on the selected channel")
     parser.add_argument("-off", "--turn_off", action='store_true', help="Turn off the selected channel")
+    parser.add_argument("-g", "--get", action='store_true', help="Print parameters of the power supply")
     args = parser.parse_args()
 
     if args.channel >= 2:
@@ -42,6 +43,18 @@ def main():
         if args.current is not None:
             server.hv_set(args.channel, "ISet", args.current)
             ut.log(f"Current set to {args.current} for channel {args.channel}.", log_path)
+
+        if args.get:
+            params=["VMon","IMonH","IMonL","VSet","ISet"]
+            print("Channel 0...")
+            for p in params:
+                print(f"CH0 parameter {p} is {server.hv_get(0, p)}")
+                ut.log(f"CH0 parameter {p} is {server.hv_get(0, p)}",log_path)
+            print("Channel 1...")
+            for p in params:                
+                print(f"CH1 parameter {p} is {server.hv_get(1, p)}")
+                ut.log(f"CH1 parameter {p} is {server.hv_get(1, p)}",log_path)
+                
 
     except Exception as e:
         ut.log(f"ERROR: {e}", log_path)
