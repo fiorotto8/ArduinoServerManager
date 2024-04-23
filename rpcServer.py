@@ -80,10 +80,15 @@ class HvSerialWrapper:
 
 if __name__ == '__main__':
     devices = {
-        'KEG': ('/dev/ttyACM0', 115200),
-        'MANGOlino': ('/dev/ttyACM1', 115200),
+        'KEG': ('/dev/ttyACM1', 115200),
+        'MANGOlino': ('/dev/ttyACM0', 115200),
     }
-    hv_board_addr = "ttyACM3"  # Adjusted for consistency
+    """
+    devices = {
+        'MANGOlino': ('/dev/ttyACM3', 115200),
+    }
+    """
+    hv_board_addr = "ttyACM2"  # Adjusted for consistency
 
     port = 8000
     with SimpleXMLRPCServer(("0.0.0.0", port), allow_none=True) as server:

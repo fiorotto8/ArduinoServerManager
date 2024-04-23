@@ -3,9 +3,27 @@ import argparse
 from xmlrpc.client import ServerProxy
 import time
 import utilities as ut  # Assuming this contains encodeArd and decodeArd functions
+import re
 
 log_path = '/home/cygno01/daq/online/ArduinoServerManager/log.txt'
 
+def extract_number_from_string(string):
+    # Define a regular expression pattern to match the number after a colon
+    pattern = r':\s*([-+]?\d*\.\d+|\d+)'  # Matches floating-point or integer numbers
+    
+    # Search for the pattern in the string
+    match = re.search(pattern, string)
+    
+    if match:
+        # Extract the matched number
+        number_str = match.group(1)
+        
+        # Convert the extracted number string to a float
+        number = float(number_str)
+        return number
+    else:
+        return None  # Return None if no match found
+    
 def main():
     parser = argparse.ArgumentParser(description='Set the source position after calibrating')
     parser.add_argument("-p", "--position", help='Position to set in Arduino', action='store', type=float, default=10)
@@ -44,7 +62,9 @@ def main():
             time.sleep(1)
             if args.verbose is not None: print("Checking pos...")
             final_pos=ut.WriteAndRead(server, name, "G",verbose=args.verbose)
-            if args.position==float(final_pos[0][-5:]):
+            # print(final_pos)
+            # if args.position==float(final_pos[0][-6:]):
+            if args.position==extract_number_from_string(final_pos[0]):
                 if args.verbose is not None: print(f"Position set correclty at: {args.position}")
                 ut.log(f"Position set correclty at: {args.position}",log_path)
             else:

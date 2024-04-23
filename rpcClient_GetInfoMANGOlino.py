@@ -39,6 +39,7 @@ def main():
         line=str(now)+";"+str(KEG_env)+";"+str(source_pos)+";"+str(MANGO_env)
         #print(line)
         with open('ArduinoServerManager/env_log.csv', 'a') as file:
+        #with open('./ArduinoServerManager/env_log.csv', 'a') as file:
             file.write(line+"\n")
 if __name__ == "__main__":
     main()

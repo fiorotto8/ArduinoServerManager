@@ -18,12 +18,14 @@ def main():
     server = ServerProxy(f"http://localhost:{args.port}")
     transfer=500#volt
     V_GEMs=np.sum(args.gem)
-    space_ring=0.9#cm
-    drift=14.25#cm
+    space_ring=1.07#cm
+    drift=15.115#cm 
     GEM_stack=V_GEMs+2*transfer
-    FC_base=GEM_stack+(args.field*space_ring)
+    FC_base=GEM_stack+(args.field*space_ring*1000)
     FC_top=FC_base+(drift*args.field*1000)
     
+    print(GEM_stack)
+
     if args.verbose:         
         print(f"GEM stack is at: {GEM_stack}")
         print(f"FC base is at: {FC_base}")
