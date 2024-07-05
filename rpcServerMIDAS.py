@@ -16,17 +16,23 @@ import subprocess
 
 log_path='/home/cygno01/daq/online/ArduinoServerManager/log.txt'
 
+import midas
+import midas.client
+
 class ArduinoSerialWrapper:
-    def __init__(self, devices):
+    def __init__(self, devices, client):
         self.devices = {}
+        self.client=client
         for name, (port, baud) in devices.items():
             try:
                 self.devices[name] = serial.Serial(port, baud, timeout=0.1)  # 100 ms timeout
                 ut.log(f"Connected to Arduino {port}: {name}")
+                self.client.msg(f"Connected to Arduino {port}: {name}", is_error=False)
 
                 time.sleep(2)  # Give time for serial connection to establish
             except serial.SerialException as e:
                 ut.log(f"Error opening serial port {port}: {e}")
+                self.client.msg(f"Error opening serial port {port}: {e}", is_error=True)
 
     def write(self, name, data):
         device = self.devices.get(name)
@@ -34,6 +40,7 @@ class ArduinoSerialWrapper:
             data_bytes = base64.b64decode(data)
             return device.write(data_bytes)
         else:
+            self.client.msg(f"Device {name} not found", is_error=True)
             raise ValueError(f"Device {name} not found")
     
     def readlines(self, name):
@@ -59,6 +66,8 @@ class ArduinoSerialWrapper:
 
             return lines
         else:
+            
+            self.client.msg(f"Device {name} not found", is_error=True)
             raise ValueError(f"Device {name} not found")
     
     def get_port(self, name):
@@ -66,15 +75,19 @@ class ArduinoSerialWrapper:
         if device:
             return f"{device.port}"
         else:
+            self.client.msg(f"Device {name} not found", is_error=True)
             raise ValueError(f"Device {name} not found")
 
 class HvSerialWrapper:
-    def __init__(self, addr):
+    def __init__(self, addr, client):
         self.board = hv.Board(addr)
+        self.client = client
         if self.board.handle >= 0:
             ut.log("Connected to board with address "+str(addr), log_path)
+            self.client.msg("Connected to board with address "+str(addr), is_error=False)
         else:
             ut.log("Error: could not connect to board with address"+str(addr), log_path)
+            self.client.msg("Error: could not connect to board with address"+str(addr), is_error=True)
             sys.exit(1)
 
     def get(self, channel, parameter):
@@ -84,7 +97,7 @@ class HvSerialWrapper:
         return self.board.set_channel_value(channel, parameter, value)
 
 
-def GetSerialConnections(verbose = False):
+def GetSerialConnections(client, verbose = False):
     p=subprocess.Popen(["ls", "-ltrh", "/dev/serial/by-id/"], stdout=subprocess.PIPE)
     out, err = p.communicate()
     out = out.decode("utf-8")
@@ -112,17 +125,23 @@ def GetSerialConnections(verbose = False):
 				
 				
     if not CAEN_found:
+        client.msg("CAEN HV not found.", is_error=True)
         raise Exception("CAEN HV not found.")
     if not MANGOlino_found:
+        client.msg("MANGOlino Arduino not found.", is_error=True)
         raise Exception("MANGOlino Arduino not found.")
     if not KEG_found:
+        client.msg("KEG Arduino not found.", is_error=True)
         raise Exception("KEG Arduino not found.")
 
     return results
 
 if __name__ == '__main__':
 
-    dev_idx = GetSerialConnections(verbose = True)
+    client = midas.client.MidasClient("rpcServer")
+
+
+    dev_idx = GetSerialConnections(client, verbose = True)
     devices = {
         'KEG': ('/dev/ttyACM'+dev_idx['KEG'], 115200),
         'MANGOlino': ('/dev/ttyACM'+dev_idx['MANGOlino'], 115200),
@@ -135,9 +154,10 @@ if __name__ == '__main__':
     hv_board_addr = "ttyACM"+dev_idx["HV"]  # Adjusted for consistency
 
     port = 8000
+    
     with SimpleXMLRPCServer(("0.0.0.0", port), allow_none=True) as server:
-        arduino_wrapper = ArduinoSerialWrapper(devices)
-        hv_wrapper = HvSerialWrapper(hv_board_addr)
+        arduino_wrapper = ArduinoSerialWrapper(devices, client)
+        hv_wrapper = HvSerialWrapper(hv_board_addr, client)
         
         # Arduino methods
         server.register_function(lambda name, data: arduino_wrapper.write(name, data), 'arduino_write')
@@ -152,8 +172,14 @@ if __name__ == '__main__':
         server.register_introspection_functions()
         
         ut.log("Server Alive", log_path)
+        client.msg("Server Alive", is_error=False)
         try:
             server.serve_forever()
         except KeyboardInterrupt:
+            print("trying to disconnect...", flush = True)
+            client.msg("Server closed", is_error=False)
+            client.disconnect()
+            print("Disconnected!")
+            print ("\nBye, bye...")
             ut.log("Server closed", log_path)
             sys.exit(0)

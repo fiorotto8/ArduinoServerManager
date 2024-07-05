@@ -24,8 +24,6 @@ def main():
     FC_base=GEM_stack+(args.field*space_ring*1000)
     FC_top=FC_base+(drift*args.field*1000)
     
-    print(GEM_stack)
-
     if args.verbose:         
         print(f"GEM stack is at: {GEM_stack}")
         print(f"FC base is at: {FC_base}")
