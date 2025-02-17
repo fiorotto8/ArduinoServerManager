@@ -7,8 +7,15 @@ import re
 import midas
 import midas.client
 import numpy as np
+from flask import Flask, render_template
+
+app = Flask(__name__)
 
 log_path = '/home/cygno01/daq/online/ArduinoServerManager/log.txt'
+
+@app.route('/')
+def index():
+    return render_template('/home/cygno01/daq/online/custom/source_motor_MANGO.html')
 
 def extract_number_from_string(string):
     # Define a regular expression pattern to match the number after a colon
@@ -26,7 +33,8 @@ def extract_number_from_string(string):
         return number
     else:
         return None  # Return None if no match found
-    
+
+@app.route('/setSource-link/')
 def setSource():
     client = midas.client.MidasClient("rpcClient_setSource")
     
@@ -120,4 +128,5 @@ def setSource():
 
 
 if __name__ == "__main__":
-    setSource()
+    app.run(debug=True)
+    #setSource()

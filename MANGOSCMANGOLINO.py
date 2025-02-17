@@ -207,13 +207,13 @@ class MANGOSensorsEquipment(midas.frontend.EquipmentBase):
 
         port = 8000
         server = ServerProxy(f"http://localhost:{port}")
-        name="KEG"
-        try:
-            KEG_env=ut.WriteAndRead(server, name, "R",verbose = False)[0]
-            time.sleep(1)
-        except Exception as e:
-            self.client.msg(f"Error interacting with {name}: {e}", is_error=True)
-            print(f"Error interacting with {name}: {e}")
+        #name="KEG"
+        #try:
+        #    KEG_env=ut.WriteAndRead(server, name, "R",verbose = False)[0]
+        #    time.sleep(1)
+        #except Exception as e:
+        #    self.client.msg(f"Error interacting with {name}: {e}", is_error=True)
+        #    print(f"Error interacting with {name}: {e}")
             
             
         name="MANGOlino"
@@ -224,11 +224,11 @@ class MANGOSensorsEquipment(midas.frontend.EquipmentBase):
             self.client.msg(f"Error interacting with {name}: {e}", is_error=True)
             print(f"Error interacting with {name}: {e}")
             
-        KEG_env_vars = KEG_env.split(";")
-        KEG_dict = {}
-        KEG_dict["Temp"] = float(KEG_env_vars[0])-273.15
-        KEG_dict["Pres"] = float(KEG_env_vars[1])/100.
-        KEG_dict["Humi"] = float(KEG_env_vars[2])
+        #KEG_env_vars = KEG_env.split(";")
+        #KEG_dict = {}
+        #KEG_dict["Temp"] = float(KEG_env_vars[0])-273.15
+        #KEG_dict["Pres"] = float(KEG_env_vars[1])/100.
+        #KEG_dict["Humi"] = float(KEG_env_vars[2])
         #KEG_dict["Posi"] = float(source_pos)
         #print(KEG_dict)
         
@@ -239,9 +239,9 @@ class MANGOSensorsEquipment(midas.frontend.EquipmentBase):
         MANGO_dict["Humi"] = float(MANGO_env_vars[2])
         #print(MANGO_dict)
        
-        self.client.odb_set("/Equipment/MANGOSensors/Variables/KEG_temp",     KEG_dict["Temp"])
-        self.client.odb_set("/Equipment/MANGOSensors/Variables/KEG_pressure", KEG_dict["Pres"])
-        self.client.odb_set("/Equipment/MANGOSensors/Variables/KEG_humidity", KEG_dict["Humi"])
+        #self.client.odb_set("/Equipment/MANGOSensors/Variables/KEG_temp",     KEG_dict["Temp"])
+        #self.client.odb_set("/Equipment/MANGOSensors/Variables/KEG_pressure", KEG_dict["Pres"])
+        #self.client.odb_set("/Equipment/MANGOSensors/Variables/KEG_humidity", KEG_dict["Humi"])
         
         
         self.client.odb_set("/Equipment/MANGOSensors/Variables/MANGOlino_temp",     MANGO_dict["Temp"])
@@ -255,7 +255,7 @@ class MANGOSensorsEquipment(midas.frontend.EquipmentBase):
                 time.sleep(1)
             self.client.odb_set("/Equipment/MANGOSensors/Settings/SerialBusy", True)
 
-            self.setSource(port, server, "KEG")
+            #self.setSource(port, server, "KEG")
 
             self.client.odb_set("/Configurations/StepperMotor/buttonPressed", False)
             self.client.odb_set("/Equipment/MANGOSensors/Settings/SerialBusy", False)

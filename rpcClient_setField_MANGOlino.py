@@ -19,8 +19,8 @@ def main():
     server = ServerProxy(f"http://localhost:{args.port}")
     transfer=200*args.transfer#volt
     V_GEMs=np.sum(args.gem)
-    space_ring=1#cm
-    drift=4.25#cm
+    space_ring=0.8#cm
+    drift=5.4#cm
     GEM_stack=V_GEMs+2*transfer
     FC_base=GEM_stack+(args.field*space_ring*1000)
     FC_top=FC_base+(drift*args.field*1000)
